@@ -1,0 +1,34 @@
+---
+layout: default
+title: Research
+description: Notes, breakdowns, and paper analysis.
+---
+
+<div class="page-wrap">
+
+  <div class="section-header">
+    <div class="section-label">Knowledge</div>
+    <h1>Research</h1>
+    <p>Notes, paper breakdowns, and raw analytical thinking.</p>
+  </div>
+
+  <ul class="card-list">
+    {% for note in site.research %}
+    <li class="card-item">
+      <div class="card-item-inner">
+        {% if note.date %}
+        <div class="card-date">{{ note.date | date: "%b %Y" }}</div>
+        {% else %}
+        <div class="card-date">&mdash;</div>
+        {% endif %}
+        <div class="card-content">
+          {% if note.tags %}<span class="card-tag">{{ note.tags | first }}</span>{% endif %}
+          <h2><a href="{{ note.url }}">{{ note.title }}</a></h2>
+          {% if note.description %}<p>{{ note.description }}</p>{% endif %}
+        </div>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+
+</div>

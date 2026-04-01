@@ -1,0 +1,33 @@
+---
+layout: default
+---
+
+<div class="page-wrap">
+
+  <a class="back-link" href="/projects/">Projects</a>
+
+  <article class="project">
+    <header class="project-header">
+      <div class="project-kicker">Project</div>
+      <h1>{{ page.title }}</h1>
+      <div class="project-meta">
+        {% if page.status %}
+          <span class="project-status">{{ page.status }}</span>
+        {% endif %}
+        {% if page.date %}
+          <span class="article-date">{{ page.date | date: "%B %Y" }}</span>
+        {% endif %}
+        {% if page.tags %}
+          {% for tag in page.tags %}
+            <span class="article-tag">{{ tag }}</span>
+          {% endfor %}
+        {% endif %}
+      </div>
+    </header>
+
+    <div class="project-body">
+      {{ content }}
+    </div>
+  </article>
+
+</div>

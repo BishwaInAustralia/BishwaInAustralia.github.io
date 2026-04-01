@@ -1,0 +1,34 @@
+---
+layout: default
+title: Projects
+description: Structured work across policy analysis, research, and building.
+---
+
+<div class="page-wrap">
+
+  <div class="section-header">
+    <div class="section-label">Work</div>
+    <h1>Projects</h1>
+    <p>Structured work: policy analysis, technical builds, and research synthesis.</p>
+  </div>
+
+  <ul class="card-list">
+    {% for project in site.projects %}
+    <li class="card-item">
+      <div class="card-item-inner">
+        {% if project.date %}
+        <div class="card-date">{{ project.date | date: "%b %Y" }}</div>
+        {% else %}
+        <div class="card-date">&mdash;</div>
+        {% endif %}
+        <div class="card-content">
+          {% if project.status %}<span class="card-tag">{{ project.status }}</span>{% endif %}
+          <h2><a href="{{ project.url }}">{{ project.title }}</a></h2>
+          {% if project.description %}<p>{{ project.description }}</p>{% endif %}
+        </div>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+
+</div>

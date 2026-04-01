@@ -1,0 +1,69 @@
+title: "Bishwa"
+tagline: "Writing on technology, policy, and society."
+description: "Essays, research, and projects at the intersection of technology, policy, and society."
+url: "https://bishwainaustralia.github.io"
+baseurl: ""
+
+author:
+  name: "Bishwa"
+  email: "aus.bishwa@gmail.com"
+
+# Collections
+collections:
+  essays:
+    output: true
+    permalink: /essays/:name/
+  research:
+    output: true
+    permalink: /research/:name/
+  projects:
+    output: true
+    permalink: /projects/:name/
+  reviews:
+    output: true
+    permalink: /reviews/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "essays"
+    values:
+      layout: "essay"
+  - scope:
+      path: ""
+      type: "research"
+    values:
+      layout: "research"
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
+  - scope:
+      path: ""
+      type: "reviews"
+    values:
+      layout: "review"
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+markdown: kramdown
+highlighter: rouge
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - README.md

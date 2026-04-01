@@ -1,0 +1,35 @@
+---
+layout: default
+title: Reviews
+description: Books, policies, and ideas — reviewed.
+---
+
+<div class="page-wrap">
+
+  <div class="section-header">
+    <div class="section-label">Reading</div>
+    <h1>Reviews</h1>
+    <p>Books, policies, and ideas worth examining closely.</p>
+  </div>
+
+  <ul class="card-list">
+    {% for review in site.reviews %}
+    <li class="card-item">
+      <div class="card-item-inner">
+        {% if review.date %}
+        <div class="card-date">{{ review.date | date: "%b %Y" }}</div>
+        {% else %}
+        <div class="card-date">&mdash;</div>
+        {% endif %}
+        <div class="card-content">
+          {% if review.rating %}<span class="card-tag">★ {{ review.rating }}/5</span>{% endif %}
+          <h2><a href="{{ review.url }}">{{ review.title }}</a></h2>
+          {% if review.author %}<p><em>by {{ review.author }}</em></p>{% endif %}
+          {% if review.description %}<p>{{ review.description }}</p>{% endif %}
+        </div>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+
+</div>
