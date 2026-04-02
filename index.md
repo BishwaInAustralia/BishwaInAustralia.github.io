@@ -1,7 +1,11 @@
----
-layout: default
-title: Home
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+</head>
+<body>
 
 <div class="page-wrap-wide">
 
@@ -18,9 +22,12 @@ title: Home
         {% for essay in site.essays limit:4 %}
         <li>
           <a href="{{ essay.url }}">{{ essay.title }}</a>
-          {% if essay.description %}<div class="item-meta">{{ essay.description }}</div>{% endif %}
+          {% if essay.description %}
+          <div class="item-meta">{{ essay.description }}</div>
+          {% endif %}
         </li>
         {% endfor %}
+
         {% for post in site.posts limit:2 %}
         <li>
           <a href="{{ post.url }}">{{ post.title }}</a>
@@ -39,7 +46,9 @@ title: Home
           {% for project in site.projects limit:3 %}
           <li>
             <a href="{{ project.url }}">{{ project.title }}</a>
-            {% if project.description %}<div class="item-meta">{{ project.description }}</div>{% endif %}
+            {% if project.description %}
+            <div class="item-meta">{{ project.description }}</div>
+            {% endif %}
           </li>
           {% endfor %}
         </ul>
@@ -52,7 +61,9 @@ title: Home
           {% for note in site.research limit:3 %}
           <li>
             <a href="{{ note.url }}">{{ note.title }}</a>
-            {% if note.description %}<div class="item-meta">{{ note.description }}</div>{% endif %}
+            {% if note.description %}
+            <div class="item-meta">{{ note.description }}</div>
+            {% endif %}
           </li>
           {% endfor %}
         </ul>
@@ -64,3 +75,6 @@ title: Home
   </div>
 
 </div>
+
+</body>
+</html>
