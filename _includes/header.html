@@ -1,12 +1,60 @@
 <header class="site-header">
   <div class="header-inner">
+
     <a class="site-logo" href="/">{{ site.title }}</a>
-    <nav class="site-nav">
-      <a href="/essays/" {% if page.url contains '/essays' %}class="active"{% endif %}>Essays</a>
-      <a href="/research/" {% if page.url contains '/research' %}class="active"{% endif %}>Research</a>
-      <a href="/projects/" {% if page.url contains '/projects' %}class="active"{% endif %}>Projects</a>
-      <a href="/reviews/" {% if page.url contains '/reviews' %}class="active"{% endif %}>Reviews</a>
+
+    <button class="menu-toggle" id="menu-toggle">
+      ☰
+    </button>
+
+    <nav class="site-nav" id="site-nav">
+
+      <div class="nav-item dropdown">
+        <a href="/essays/" {% if page.url contains '/essays' %}class="active"{% endif %}>Essays</a>
+        <div class="dropdown-menu">
+          
+          <a href="/essays/opinion/">Opinion</a>
+          <a href="/essays/technical/">Technical</a>
+        </div>
+      </div>
+
+      <div class="nav-item dropdown">
+        <a href="/research/" {% if page.url contains '/research' %}class="active"{% endif %}>Research</a>
+        <div class="dropdown-menu">
+          <a href="/research/publications/">Publications</a>
+          <a href="/research/analysis/">Research Analysis</a>
+        </div>
+      </div>
+
+      <div class="nav-item dropdown">
+        <a href="/projects/" {% if page.url contains '/projects' %}class="active"{% endif %}>Projects</a>
+        <div class="dropdown-menu">
+          <a href="/projects/Environmental/">Environmental Projects</a>
+          <a href="/projects/Policy/">Policy Projects</a>
+        </div>
+      </div>
+
+
+      <div class="nav-item dropdown">
+        <a href="/reviews/" {% if page.url contains '/reviews' %}class="active"{% endif %}>Reviews</a>
+        <div class="dropdown-menu">
+          <a href="/reviews/publications/">Publications Reviews</a>
+          <a href="/reviews/analysis/">Review Analysis</a>
+        </div>
+      </div>
+
+
       <a href="/about/" {% if page.url == '/about/' %}class="active"{% endif %}>About</a>
+
+      <div class="nav-search">
+        <input type="text" placeholder="Search...">
+      </div>
+
+      <button class="dark-toggle" id="dark-toggle">
+        🌙
+      </button>
+
     </nav>
+
   </div>
 </header>

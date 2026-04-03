@@ -1,0 +1,125 @@
+/* =========================
+Footer
+========================= */
+
+.site-footer {
+margin-top: 4rem;
+border-top: 1px solid #eee;
+background: #fafafa;
+}
+
+.footer-inner {
+max-width: 1200px;
+margin: auto;
+padding: 2.5rem 1.5rem;
+
+display: grid;
+grid-template-columns: 1.5fr 2fr;
+gap: 2rem;
+}
+
+
+/* =========================
+Left Section
+========================= */
+
+.footer-title {
+font-weight: 600;
+font-size: 1.1rem;
+margin-bottom: .5rem;
+}
+
+.footer-tagline {
+color: #666;
+font-size: .95rem;
+max-width: 320px;
+}
+
+
+/* =========================
+Links
+========================= */
+
+.footer-links {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 2rem;
+}
+
+.footer-column {
+display: flex;
+flex-direction: column;
+gap: .4rem;
+}
+
+.footer-heading {
+font-weight: 600;
+margin-bottom: .5rem;
+font-size: .95rem;
+}
+
+.footer-column a {
+text-decoration: none;
+color: #555;
+font-size: .9rem;
+}
+
+.footer-column a:hover {
+color: #0066cc;
+}
+
+
+/* =========================
+Bottom
+========================= */
+
+.footer-bottom {
+border-top: 1px solid #eee;
+padding: 1rem 1.5rem;
+text-align: center;
+font-size: .85rem;
+color: #777;
+}
+
+
+/* =========================
+Dark Mode
+========================= */
+
+body.dark .site-footer {
+background: #0f172a;
+border-color: #1f2937;
+}
+
+body.dark .footer-bottom {
+border-color: #1f2937;
+}
+
+body.dark .footer-column a {
+color: #cbd5e1;
+}
+
+
+/* =========================
+Responsive
+========================= */
+
+@media (max-width: 900px){
+
+.footer-inner {
+grid-template-columns: 1fr;
+}
+
+.footer-links {
+grid-template-columns: 1fr 1fr;
+}
+
+}
+
+@media (max-width: 600px){
+
+.footer-links {
+grid-template-columns: 1fr;
+}
+
+}
