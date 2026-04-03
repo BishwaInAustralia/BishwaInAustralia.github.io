@@ -3,54 +3,103 @@
 
     <a class="site-logo" href="/">{{ site.title }}</a>
 
-    <button class="menu-toggle" id="menu-toggle">
+    <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
       ☰
     </button>
 
     <nav class="site-nav" id="site-nav">
 
+      <!-- ================= Essays ================= -->
       <div class="nav-item dropdown">
-        <a href="/essays/" {% if page.url contains '/essays' %}class="active"{% endif %}>Essays</a>
+        <button class="dropdown-toggle" aria-expanded="false">
+          Essays
+        </button>
         <div class="dropdown-menu">
-          
-          <a href="/essays/opinion/">Opinion</a>
-          <a href="/essays/technical/">Technical</a>
+
+          <a href="/essays/">All Essays</a>
+
+          <div class="dropdown-divider"></div>
+
+          <a href="/essays/opinion/">Opinion & Commentary</a>
+          <a href="/essays/policy/">Policy & Governance</a>
+          <a href="/essays/climate/">Climate & Environment</a>
+          <a href="/essays/technology/">Technology & Society</a>
+          <a href="/essays/field/">Field Reflections</a>
+
         </div>
       </div>
 
+      <!-- ================= Research ================= -->
       <div class="nav-item dropdown">
-        <a href="/research/" {% if page.url contains '/research' %}class="active"{% endif %}>Research</a>
+        <button class="dropdown-toggle" aria-expanded="false">
+          Research
+        </button>
         <div class="dropdown-menu">
+
+          <a href="/research/">Overview</a>
+
+          <div class="dropdown-divider"></div>
+
           <a href="/research/publications/">Publications</a>
-          <a href="/research/analysis/">Research Analysis</a>
+          <a href="/research/projects/">Research Projects</a>
+          <a href="/research/working-papers/">Working Papers</a>
+          <a href="/research/data/">Data & Analysis</a>
+          <a href="/research/case-studies/">Case Studies</a>
+
         </div>
       </div>
 
+      <!-- ================= Projects ================= -->
       <div class="nav-item dropdown">
-        <a href="/projects/" {% if page.url contains '/projects' %}class="active"{% endif %}>Projects</a>
+        <button class="dropdown-toggle" aria-expanded="false">
+          Projects
+        </button>
         <div class="dropdown-menu">
-          <a href="/projects/Environmental/">Environmental Projects</a>
-          <a href="/projects/Policy/">Policy Projects</a>
+
+          <a href="/projects/">All Projects</a>
+
+          <div class="dropdown-divider"></div>
+
+          <a href="/projects/environmental/">Environmental Projects</a>
+          <a href="/projects/tools/">Research Tools</a>
+          <a href="/projects/web/">Web Applications</a>
+          <a href="/projects/data-vis/">Data Visualization</a>
+          <a href="/projects/consulting/">Consulting Projects</a>
+
         </div>
       </div>
 
-
+      <!-- ================= Reviews ================= -->
       <div class="nav-item dropdown">
-        <a href="/reviews/" {% if page.url contains '/reviews' %}class="active"{% endif %}>Reviews</a>
+        <button class="dropdown-toggle" aria-expanded="false">
+          Reviews
+        </button>
         <div class="dropdown-menu">
-          <a href="/reviews/publications/">Publications Reviews</a>
-          <a href="/reviews/analysis/">Review Analysis</a>
+
+          <a href="/reviews/">All Reviews</a>
+
+          <div class="dropdown-divider"></div>
+
+          <a href="/reviews/journals/">Journal Reviews</a>
+          <a href="/reviews/policy/">Policy Reviews</a>
+          <a href="/reviews/books/">Book Reviews</a>
+          <a href="/reviews/technology/">Technology Reviews</a>
+          <a href="/reviews/methods/">Methods Reviews</a>
+
         </div>
       </div>
 
-
+      <!-- ================= Standalone ================= -->
       <a href="/about/" {% if page.url == '/about/' %}class="active"{% endif %}>About</a>
+      <a href="/now/">Now</a>
 
+      <!-- ================= Search ================= -->
       <div class="nav-search">
-        <input type="text" placeholder="Search...">
+        <input type="text" placeholder="Search..." />
       </div>
 
-      <button class="dark-toggle" id="dark-toggle">
+      <!-- ================= Dark Mode ================= -->
+      <button class="dark-toggle" id="dark-toggle" aria-label="Toggle dark mode">
         🌙
       </button>
 

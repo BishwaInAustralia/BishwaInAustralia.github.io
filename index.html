@@ -3,74 +3,114 @@ layout: default
 title: Home
 ---
 
-<div class="page-wrap-wide">
+<section class="home-elite">
 
-  <div class="home-hero">
-    <h1>Writing at the edge of technology, policy, and society.</h1>
-    <p>Essays, research notes, and structured projects by {{ site.author.name }}.</p>
-  </div>
+  <div class="home-wrap">
 
-  <div class="home-grid">
+    <!-- ================= HERO ================= -->
+    <header class="home-hero">
+      <h1>
+        Studying how environment, technology, and policy systems shape society.
+      </h1>
+      <p>
+        Essays, research, and projects by {{ site.author.name }}.
+      </p>
+    </header>
 
-    <div class="home-section">
-      <h2>Latest Essays</h2>
-      <ul class="home-list">
-        {% for essay in site.essays limit:4 %}
-        <li>
+
+    <!-- ================= FEATURED (CURATED) ================= -->
+    <section class="home-feature">
+
+      <h2>Selected Work</h2>
+
+      <div class="feature-list">
+
+        {% for essay in site.essays limit:3 %}
           <a href="{{ essay.url }}">{{ essay.title }}</a>
-          {% if essay.description %}
-          <div class="item-meta">{{ essay.description }}</div>
-          {% endif %}
-        </li>
         {% endfor %}
 
-        {% for post in site.posts limit:2 %}
-        <li>
-          <a href="{{ post.url }}">{{ post.title }}</a>
-          <div class="item-meta">{{ post.date | date: "%b %-d, %Y" }}</div>
-        </li>
-        {% endfor %}
-      </ul>
-      <a class="see-all" href="/essays/">All essays →</a>
-    </div>
-
-    <div>
-
-      <div class="home-section">
-        <h2>Projects</h2>
-        <ul class="home-list">
-          {% for project in site.projects limit:3 %}
-          <li>
-            <a href="{{ project.url }}">{{ project.title }}</a>
-            {% if project.description %}
-            <div class="item-meta">{{ project.description }}</div>
-            {% endif %}
-          </li>
-          {% endfor %}
-        </ul>
-        <a class="see-all" href="/projects/">All projects →</a>
       </div>
 
-      <div class="home-section" style="margin-top: 2.5rem;">
-        <h2>Research</h2>
-        <ul class="home-list">
-          {% for note in site.research limit:3 %}
-          <li>
-            <a href="{{ note.url }}">{{ note.title }}</a>
-            {% if note.description %}
-            <div class="item-meta">{{ note.description }}</div>
-            {% endif %}
-          </li>
-          {% endfor %}
-        </ul>
-        <a class="see-all" href="/research/">All research →</a>
+    </section>
+
+
+    <!-- ================= MAIN GRID ================= -->
+    <section class="home-grid">
+
+      <!-- LEFT: ESSAYS -->
+      <div class="home-column">
+
+        <div class="home-section">
+          <h3>Latest Essays</h3>
+
+          <ul class="home-list">
+            {% for essay in site.essays limit:5 %}
+            <li>
+              <a href="{{ essay.url }}">{{ essay.title }}</a>
+              {% if essay.description %}
+              <div class="item-meta">{{ essay.description }}</div>
+              {% endif %}
+            </li>
+            {% endfor %}
+          </ul>
+
+          <a class="see-all" href="/essays/">All essays →</a>
+        </div>
+
       </div>
 
-    </div>
+      <!-- RIGHT: STRUCTURED -->
+      <div class="home-column">
+
+        <!-- RESEARCH -->
+        <div class="home-section">
+          <h3>Research</h3>
+
+          <ul class="home-list">
+            {% for note in site.research limit:3 %}
+            <li>
+              <a href="{{ note.url }}">{{ note.title }}</a>
+              {% if note.description %}
+              <div class="item-meta">{{ note.description }}</div>
+              {% endif %}
+            </li>
+            {% endfor %}
+          </ul>
+
+          <a class="see-all" href="/research/">All research →</a>
+        </div>
+
+        <!-- PROJECTS -->
+        <div class="home-section">
+          <h3>Projects</h3>
+
+          <ul class="home-list">
+            {% for project in site.projects limit:3 %}
+            <li>
+              <a href="{{ project.url }}">{{ project.title }}</a>
+              {% if project.description %}
+              <div class="item-meta">{{ project.description }}</div>
+              {% endif %}
+            </li>
+            {% endfor %}
+          </ul>
+
+          <a class="see-all" href="/projects/">All projects →</a>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= THINKING FOOTER ================= -->
+    <section class="home-footer-note">
+      <p>
+        This site is an evolving system of writing, research, and applied work—
+        structured around long-term questions in environment, governance, and technology.
+      </p>
+    </section>
 
   </div>
 
-</div>
-
-</body>
-</html>
+</section>

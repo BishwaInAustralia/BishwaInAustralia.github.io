@@ -1,0 +1,113 @@
+/* ========================= ABOUT PAGE ========================= */
+
+.about-page {
+  padding: 4rem 1.5rem;
+}
+
+.about-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* HEADER */
+.about-header {
+  margin-bottom: 3rem;
+}
+
+.about-header h1 {
+  font-size: 2.4rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.about-subtitle {
+  color: #666;
+  font-size: 1.05rem;
+}
+
+/* GRID */
+.about-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem;
+}
+
+/* MAIN CONTENT */
+.about-main {
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.about-block {
+  margin-bottom: 2.5rem;
+}
+
+.about-block h2 {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #888;
+  margin-bottom: 1rem;
+}
+
+.lead {
+  font-size: 1.2rem;
+  color: #111;
+  margin-bottom: 1.2rem;
+}
+
+/* LIST */
+.about-list {
+  list-style: none;
+  padding: 0;
+}
+
+.about-list li {
+  margin-bottom: 0.6rem;
+  color: #333;
+}
+
+/* LINKS */
+.about-links a {
+  margin-right: 1rem;
+  text-decoration: none;
+  color: #0066cc;
+  font-weight: 500;
+}
+
+.about-links a:hover {
+  text-decoration: underline;
+}
+
+/* SIDEBAR */
+.about-sidebar {
+  font-size: 0.95rem;
+}
+
+.meta-block {
+  margin-bottom: 2rem;
+}
+
+.meta-block h3 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #999;
+  margin-bottom: 0.5rem;
+}
+
+.meta-block ul {
+  list-style: none;
+  padding: 0;
+}
+
+.meta-block li {
+  margin-bottom: 0.4rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}

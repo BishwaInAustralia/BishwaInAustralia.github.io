@@ -1,28 +1,58 @@
-// Mobile Menu
 
-document.getElementById("menu-toggle")
-.addEventListener("click", function(){
+/* ========================= MOBILE MENU ========================= */
+const menuToggle = document.getElementById('menu-toggle');
+const nav = document.getElementById('site-nav');
 
-document.getElementById("site-nav")
-.classList.toggle("show");
-
+menuToggle.addEventListener('click', () => {
+  nav.classList.toggle('show');
 });
 
+/* ========================= DROPDOWN TOGGLE ========================= */
+const dropdownButtons = document.querySelectorAll('.dropdown-toggle');
 
+dropdownButtons.forEach(button => {
+  button.addEventListener('click', (e) => {
+    e.stopPropagation();
 
-// Dark Mode
+    const parent = button.parentElement;
 
-document.getElementById("dark-toggle")
-.addEventListener("click", function(){
+    // Close others
+    document.querySelectorAll('.dropdown').forEach(d => {
+      if (d !== parent) {
+        d.classList.remove('open');
+        d.querySelector('.dropdown-toggle')
+          .setAttribute('aria-expanded', 'false');
+      }
+    });
 
-document.body.classList.toggle("dark");
-
+    const isOpen = parent.classList.toggle('open');
+    button.setAttribute('aria-expanded', isOpen);
+  });
 });
 
-const search = document.querySelector(".nav-search input");
+/* ========================= CLOSE ON OUTSIDE CLICK ========================= */
+document.addEventListener('click', () => {
+  document.querySelectorAll('.dropdown').forEach(d => {
+    d.classList.remove('open');
+    d.querySelector('.dropdown-toggle')
+      .setAttribute('aria-expanded', 'false');
+  });
+});
 
-search?.addEventListener("keyup", function(){
+/* ========================= ESC KEY CLOSE ========================= */
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.dropdown').forEach(d => {
+      d.classList.remove('open');
+      d.querySelector('.dropdown-toggle')
+        .setAttribute('aria-expanded', 'false');
+    });
+  }
+});
 
-console.log("Searching:", this.value);
+/* ========================= DARK MODE ========================= */
+const darkToggle = document.getElementById('dark-toggle');
 
+darkToggle.addEventListener('click', () => {
+  document.body.classList.toggle('dark');
 });
