@@ -1,0 +1,62 @@
+---
+layout: default
+---
+
+{% assign category_name = page.category | default: page.title | downcase %}
+{% assign collection_name = page.collection_name %}
+
+{% comment %}
+  Determine which collection to pull from based on the URL pattern.
+  This expects that in the front matter of each subcategory page,
+  you set 'collection_name' (e.g., 'essays', 'research', 'projects', 'reviews')
+  and 'category' (e.g., 'opinion', 'publications', 'environmental', 'books').
+{% endcomment %}
+
+{% assign items = site[collection_name] | where: "category", category_name | sort: "date" | reverse %}
+
+<section class="category-page">
+  <div class="category-container">
+
+    <!-- Hero -->
+    <div class="category-hero">
+      <h1>{{ page.title }}</h1>
+      <p>{{ page.description | default: "Browse all items in this category." }}</p>
+    </div>
+
+    <!-- Items grid -->
+    {% if items.size > 0 %}
+      <div class="category-grid">
+        {% for item in items %}
+          <article class="category-card">
+            <div class="card-meta">
+              <span class="item-date">{{ item.date | date: "%b %d, %Y" }}</span>
+              <span class="item-cat">{{ category_name | capitalize }}</span>
+            </div>
+            <h3><a href="{{ item.url }}">{{ item.title }}</a></h3>
+            {% if item.description %}
+              <p class="item-excerpt">{{ item.description | truncate: 140 }}</p>
+            {% endif %}
+            {% if item.authors or item.journal or item.tech %}
+              <div class="item-extra">
+                {% if item.authors %}<span>{{ item.authors }}</span>{% endif %}
+                {% if item.journal %}<span>{{ item.journal }}</span>{% endif %}
+                {% if item.tech %}<span>{{ item.tech }}</span>{% endif %}
+              </div>
+            {% endif %}
+            <a href="{{ item.url }}" class="read-more">Read more →</a>
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="empty-state">
+        <p>No items in this category yet. Check back soon.</p>
+      </div>
+    {% endif %}
+
+    <!-- Back to parent section -->
+    <div class="back-link">
+      <a href="{{ site.baseurl }}/{{ collection_name }}/">← All {{ collection_name | capitalize }}</a>
+    </div>
+
+  </div>
+</section>
