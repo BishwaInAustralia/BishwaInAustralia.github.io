@@ -1,35 +1,165 @@
 ---
 layout: default
 title: Research
-description: Notes, breakdowns, and paper analysis.
+description: Systemic analysis of environmental, policy, and technological systems.
 permalink: /research/
 ---
 
-<div class="page-wrap">
 
-  <div class="section-header">
-    <div class="section-label">Knowledge</div>
-    <h1>Research</h1>
-    <p>Notes, paper breakdowns, and raw analytical thinking.</p>
-  </div>
+<section class="research-page">
+  <div class="research-container">
 
-  <ul class="card-list">
-    {% for note in site.research %}
-    <li class="card-item">
-      <div class="card-item-inner">
-        {% if note.date %}
-        <div class="card-date">{{ note.date | date: "%b %Y" }}</div>
-        {% else %}
-        <div class="card-date">&mdash;</div>
-        {% endif %}
-        <div class="card-content">
-          {% if note.tags %}<span class="card-tag">{{ note.tags | first }}</span>{% endif %}
-          <h2><a href="{{ note.url }}">{{ note.title }}</a></h2>
-          {% if note.description %}<p>{{ note.description }}</p>{% endif %}
-        </div>
+    <!-- Hero -->
+    <div class="research-hero">
+      <h1>Research</h1>
+      <p>Working papers, publications, data analysis, and case studies at the intersection of environment, technology, and policy.</p>
+    </div>
+
+    <!-- Category navigation (quick filters) -->
+    <div class="research-categories">
+      <a href="#publications" class="cat-chip">Publications</a>
+      <a href="#projects" class="cat-chip">Research Projects</a>
+      <a href="#working-papers" class="cat-chip">Working Papers</a>
+      <a href="#data" class="cat-chip">Data & Analysis</a>
+      <a href="#case-studies" class="cat-chip">Case Studies</a>
+    </div>
+
+    <!-- ========== PUBLICATIONS ========== -->
+    {% assign publications = site.research | where: "category", "publications" | sort: "date" | reverse %}
+    {% if publications.size > 0 %}
+    <section class="research-group" id="publications">
+      <h2 class="group-title">Publications</h2>
+      <div class="research-grid">
+        {% for item in publications %}
+        <article class="research-card">
+          <div class="card-meta">
+            <span class="research-date">{{ item.date | date: "%b %d, %Y" }}</span>
+            <span class="research-cat">Publication</span>
+          </div>
+          <h3><a href="{{ item.url }}">{{ item.title }}</a></h3>
+          {% if item.description %}
+            <p class="research-excerpt">{{ item.description | truncate: 140 }}</p>
+          {% endif %}
+          {% if item.authors %}
+            <div class="research-authors">{{ item.authors }}</div>
+          {% endif %}
+          <a href="{{ item.url }}" class="read-more">Read →</a>
+        </article>
+        {% endfor %}
       </div>
-    </li>
-    {% endfor %}
-  </ul>
+    </section>
+    {% endif %}
 
-</div>
+    <!-- ========== RESEARCH PROJECTS ========== -->
+    {% assign projects = site.research | where: "category", "projects" | sort: "date" | reverse %}
+    {% if projects.size > 0 %}
+    <section class="research-group" id="projects">
+      <h2 class="group-title">Research Projects</h2>
+      <div class="research-grid">
+        {% for item in projects %}
+        <article class="research-card">
+          <div class="card-meta">
+            <span class="research-date">{{ item.date | date: "%b %d, %Y" }}</span>
+            <span class="research-cat">Project</span>
+          </div>
+          <h3><a href="{{ item.url }}">{{ item.title }}</a></h3>
+          {% if item.description %}
+            <p class="research-excerpt">{{ item.description | truncate: 140 }}</p>
+          {% endif %}
+          <a href="{{ item.url }}" class="read-more">Details →</a>
+        </article>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- ========== WORKING PAPERS ========== -->
+    {% assign working_papers = site.research | where: "category", "working-papers" | sort: "date" | reverse %}
+    {% if working_papers.size > 0 %}
+    <section class="research-group" id="working-papers">
+      <h2 class="group-title">Working Papers</h2>
+      <div class="research-grid">
+        {% for item in working_papers %}
+        <article class="research-card">
+          <div class="card-meta">
+            <span class="research-date">{{ item.date | date: "%b %d, %Y" }}</span>
+            <span class="research-cat">Working Paper</span>
+          </div>
+          <h3><a href="{{ item.url }}">{{ item.title }}</a></h3>
+          {% if item.description %}
+            <p class="research-excerpt">{{ item.description | truncate: 140 }}</p>
+          {% endif %}
+          <a href="{{ item.url }}" class="read-more">Download →</a>
+        </article>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- ========== DATA & ANALYSIS ========== -->
+    {% assign data_items = site.research | where: "category", "data" | sort: "date" | reverse %}
+    {% if data_items.size > 0 %}
+    <section class="research-group" id="data">
+      <h2 class="group-title">Data & Analysis</h2>
+      <div class="research-grid">
+        {% for item in data_items %}
+        <article class="research-card">
+          <div class="card-meta">
+            <span class="research-date">{{ item.date | date: "%b %d, %Y" }}</span>
+            <span class="research-cat">Data</span>
+          </div>
+          <h3><a href="{{ item.url }}">{{ item.title }}</a></h3>
+          {% if item.description %}
+            <p class="research-excerpt">{{ item.description | truncate: 140 }}</p>
+          {% endif %}
+          <a href="{{ item.url }}" class="read-more">Explore →</a>
+        </article>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- ========== CASE STUDIES ========== -->
+    {% assign case_studies = site.research | where: "category", "case-studies" | sort: "date" | reverse %}
+    {% if case_studies.size > 0 %}
+    <section class="research-group" id="case-studies">
+      <h2 class="group-title">Case Studies</h2>
+      <div class="research-grid">
+        {% for item in case_studies %}
+        <article class="research-card">
+          <div class="card-meta">
+            <span class="research-date">{{ item.date | date: "%b %d, %Y" }}</span>
+            <span class="research-cat">Case Study</span>
+          </div>
+          <h3><a href="{{ item.url }}">{{ item.title }}</a></h3>
+          {% if item.description %}
+            <p class="research-excerpt">{{ item.description | truncate: 140 }}</p>
+          {% endif %}
+          <a href="{{ item.url }}" class="read-more">Read case →</a>
+        </article>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- Fallback if no research items -->
+    {% if site.research.size == 0 %}
+    <div class="empty-state">
+      <p>No research items yet. Check back soon.</p>
+    </div>
+    {% endif %}
+
+    <!-- Topic cloud -->
+    <div class="topic-cluster">
+      <h4>Explore more</h4>
+      <div class="topic-buttons">
+        <a href="{{ site.baseurl }}/essays/">Essays</a>
+        <a href="{{ site.baseurl }}/projects/">Projects</a>
+        <a href="{{ site.baseurl }}/reviews/">Reviews</a>
+        <a href="{{ site.baseurl }}/about/">About</a>
+        <a href="{{ site.baseurl }}/now/">Now</a>
+      </div>
+    </div>
+
+  </div>
+</section>

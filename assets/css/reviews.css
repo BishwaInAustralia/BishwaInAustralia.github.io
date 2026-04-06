@@ -1,0 +1,237 @@
+
+
+
+/* ============================================
+   REVIEWS PAGE – clean, card‑based, grouped
+   ============================================ */
+
+.reviews-page {
+  background: #ffffff;
+  padding: 3rem 1.5rem 5rem;
+}
+
+.reviews-container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* Hero */
+.reviews-hero {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.reviews-hero h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #0a2a44;
+  margin-bottom: 0.75rem;
+}
+
+.reviews-hero p {
+  font-size: 1.2rem;
+  color: #3a4c62;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* Category chips */
+.reviews-categories {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 3rem;
+}
+
+.cat-chip {
+  background: #f0f4fa;
+  padding: 0.5rem 1.2rem;
+  border-radius: 40px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #1f2a3e;
+  transition: all 0.2s;
+}
+
+.cat-chip:hover {
+  background: #2266dc;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Review groups */
+.reviews-group {
+  margin-bottom: 4rem;
+}
+
+.group-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #0a2a44;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid #eef2f8;
+  display: inline-block;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 2rem;
+}
+
+/* Review card */
+.review-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 1.5rem;
+  border: 1px solid #eef2f8;
+  transition: all 0.25s ease;
+}
+
+.review-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.08);
+  border-color: #dce5f0;
+}
+
+.card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  font-size: 0.75rem;
+}
+
+.review-date {
+  color: #6c7e97;
+}
+
+.review-cat {
+  background: #eef2f8;
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  color: #1a2c3e;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.review-card h3 {
+  font-size: 1.25rem;
+  line-height: 1.3;
+  margin: 0 0 0.75rem;
+}
+
+.review-card h3 a {
+  text-decoration: none;
+  color: #0a2a44;
+  transition: color 0.2s;
+}
+
+.review-card h3 a:hover {
+  color: #2266dc;
+}
+
+.review-excerpt {
+  font-size: 0.9rem;
+  color: #4a5b6e;
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
+}
+
+.review-source {
+  font-size: 0.8rem;
+  color: #6c7e97;
+  margin-bottom: 0.75rem;
+  font-style: italic;
+}
+
+.read-more {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #2266dc;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.read-more:hover {
+  border-bottom-color: #2266dc;
+}
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  padding: 4rem;
+  color: #8a9bb0;
+  font-style: italic;
+}
+
+/* Topic cloud */
+.topic-cluster {
+  text-align: center;
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid #eef2f8;
+}
+
+.topic-cluster h4 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.topic-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.topic-buttons a {
+  background: #f0f4fa;
+  padding: 0.4rem 1rem;
+  border-radius: 40px;
+  font-size: 0.8rem;
+  text-decoration: none;
+  color: #1f2a3e;
+  transition: all 0.2s;
+}
+
+.topic-buttons a:hover {
+  background: #2266dc;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .reviews-hero h1 {
+    font-size: 2.8rem;
+  }
+  .reviews-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .reviews-page {
+    padding: 2rem 1rem;
+  }
+  .reviews-hero h1 {
+    font-size: 2rem;
+  }
+  .reviews-hero p {
+    font-size: 1rem;
+  }
+  .group-title {
+    font-size: 1.5rem;
+  }
+  .reviews-grid {
+    grid-template-columns: 1fr;
+  }
+}

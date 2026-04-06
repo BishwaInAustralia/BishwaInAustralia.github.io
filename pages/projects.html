@@ -5,31 +5,170 @@ description: Structured work across policy analysis, research, and building.
 permalink: /projects/
 ---
 
-<div class="page-wrap">
 
-  <div class="section-header">
-    <div class="section-label">Work</div>
-    <h1>Projects</h1>
-    <p>Structured work: policy analysis, technical builds, and research synthesis.</p>
-  </div>
 
-  <ul class="card-list">
-    {% for project in site.projects %}
-    <li class="card-item">
-      <div class="card-item-inner">
-        {% if project.date %}
-        <div class="card-date">{{ project.date | date: "%b %Y" }}</div>
-        {% else %}
-        <div class="card-date">&mdash;</div>
-        {% endif %}
-        <div class="card-content">
-          {% if project.status %}<span class="card-tag">{{ project.status }}</span>{% endif %}
-          <h2><a href="{{ project.url }}">{{ project.title }}</a></h2>
-          {% if project.description %}<p>{{ project.description }}</p>{% endif %}
-        </div>
+
+
+
+<section class="projects-page">
+  <div class="projects-container">
+
+    <!-- Hero -->
+    <div class="projects-hero">
+      <h1>Projects</h1>
+      <p>Tools, web applications, data visualizations, and consulting work at the intersection of environment, technology, and policy.</p>
+    </div>
+
+    <!-- Category navigation (quick filters) -->
+    <div class="projects-categories">
+      <a href="#environmental" class="cat-chip">Environmental</a>
+      <a href="#tools" class="cat-chip">Research Tools</a>
+      <a href="#web" class="cat-chip">Web Apps</a>
+      <a href="#data-vis" class="cat-chip">Data Viz</a>
+      <a href="#consulting" class="cat-chip">Consulting</a>
+    </div>
+
+    <!-- ========== ENVIRONMENTAL PROJECTS ========== -->
+    {% assign environmental = site.projects | where: "category", "environmental" | sort: "date" | reverse %}
+    {% if environmental.size > 0 %}
+    <section class="projects-group" id="environmental">
+      <h2 class="group-title">Environmental Projects</h2>
+      <div class="projects-grid">
+        {% for item in environmental %}
+        <article class="project-card">
+          <div class="card-meta">
+            <span class="project-date">{{ item.date | date: "%b %d, %Y" }}</span>
+            <span class="project-cat">Environmental</span>
+          </div>
+          <h3><a href="{{ item.url }}">{{ item.title }}</a></h3>
+          {% if item.description %}
+            <p class="project-excerpt">{{ item.description | truncate: 140 }}</p>
+          {% endif %}
+          {% if item.tech %}
+            <div class="project-tech">{{ item.tech }}</div>
+          {% endif %}
+          <a href="{{ item.url }}" class="read-more">View project →</a>
+        </article>
+        {% endfor %}
       </div>
-    </li>
-    {% endfor %}
-  </ul>
+    </section>
+    {% endif %}
 
-</div>
+    <!-- ========== RESEARCH TOOLS ========== -->
+    {% assign tools = site.projects | where: "category", "tools" | sort: "date" | reverse %}
+    {% if tools.size > 0 %}
+    <section class="projects-group" id="tools">
+      <h2 class="group-title">Research Tools</h2>
+      <div class="projects-grid">
+        {% for item in tools %}
+        <article class="project-card">
+          <div class="card-meta">
+            <span class="project-date">{{ item.date | date: "%b %d, %Y" }}</span>
+            <span class="project-cat">Tool</span>
+          </div>
+          <h3><a href="{{ item.url }}">{{ item.title }}</a></h3>
+          {% if item.description %}
+            <p class="project-excerpt">{{ item.description | truncate: 140 }}</p>
+          {% endif %}
+          <a href="{{ item.url }}" class="read-more">Explore tool →</a>
+        </article>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- ========== WEB APPLICATIONS ========== -->
+    {% assign webapps = site.projects | where: "category", "web" | sort: "date" | reverse %}
+    {% if webapps.size > 0 %}
+    <section class="projects-group" id="web">
+      <h2 class="group-title">Web Applications</h2>
+      <div class="projects-grid">
+        {% for item in webapps %}
+        <article class="project-card">
+          <div class="card-meta">
+            <span class="project-date">{{ item.date | date: "%b %d, %Y" }}</span>
+            <span class="project-cat">Web App</span>
+          </div>
+          <h3><a href="{{ item.url }}">{{ item.title }}</a></h3>
+          {% if item.description %}
+            <p class="project-excerpt">{{ item.description | truncate: 140 }}</p>
+          {% endif %}
+          <a href="{{ item.url }}" class="read-more">Launch app →</a>
+        </article>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- ========== DATA VISUALIZATION ========== -->
+    {% assign datavis = site.projects | where: "category", "data-vis" | sort: "date" | reverse %}
+    {% if datavis.size > 0 %}
+    <section class="projects-group" id="data-vis">
+      <h2 class="group-title">Data Visualization</h2>
+      <div class="projects-grid">
+        {% for item in datavis %}
+        <article class="project-card">
+          <div class="card-meta">
+            <span class="project-date">{{ item.date | date: "%b %d, %Y" }}</span>
+            <span class="project-cat">Data Viz</span>
+          </div>
+          <h3><a href="{{ item.url }}">{{ item.title }}</a></h3>
+          {% if item.description %}
+            <p class="project-excerpt">{{ item.description | truncate: 140 }}</p>
+          {% endif %}
+          <a href="{{ item.url }}" class="read-more">View viz →</a>
+        </article>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- ========== CONSULTING PROJECTS ========== -->
+    {% assign consulting = site.projects | where: "category", "consulting" | sort: "date" | reverse %}
+    {% if consulting.size > 0 %}
+    <section class="projects-group" id="consulting">
+      <h2 class="group-title">Consulting Projects</h2>
+      <div class="projects-grid">
+        {% for item in consulting %}
+        <article class="project-card">
+          <div class="card-meta">
+            <span class="project-date">{{ item.date | date: "%b %d, %Y" }}</span>
+            <span class="project-cat">Consulting</span>
+          </div>
+          <h3><a href="{{ item.url }}">{{ item.title }}</a></h3>
+          {% if item.description %}
+            <p class="project-excerpt">{{ item.description | truncate: 140 }}</p>
+          {% endif %}
+          <a href="{{ item.url }}" class="read-more">Read case →</a>
+        </article>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- Fallback if no projects -->
+    {% if site.projects.size == 0 %}
+    <div class="empty-state">
+      <p>No projects yet. Check back soon.</p>
+    </div>
+    {% endif %}
+
+    <!-- Topic cloud -->
+    <div class="topic-cluster">
+      <h4>Explore more</h4>
+      <div class="topic-buttons">
+        <a href="{{ site.baseurl }}/essays/">Essays</a>
+        <a href="{{ site.baseurl }}/research/">Research</a>
+        <a href="{{ site.baseurl }}/reviews/">Reviews</a>
+        <a href="{{ site.baseurl }}/about/">About</a>
+        <a href="{{ site.baseurl }}/now/">Now</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+

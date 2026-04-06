@@ -5,32 +5,164 @@ description: Books, policies, and ideas — reviewed.
 permalink: /reviews/
 ---
 
-<div class="page-wrap">
 
-  <div class="section-header">
-    <div class="section-label">Reading</div>
-    <h1>Reviews</h1>
-    <p>Books, policies, and ideas worth examining closely.</p>
-  </div>
+<section class="reviews-page">
+  <div class="reviews-container">
 
-  <ul class="card-list">
-    {% for review in site.reviews %}
-    <li class="card-item">
-      <div class="card-item-inner">
-        {% if review.date %}
-        <div class="card-date">{{ review.date | date: "%b %Y" }}</div>
-        {% else %}
-        <div class="card-date">&mdash;</div>
-        {% endif %}
-        <div class="card-content">
-          {% if review.rating %}<span class="card-tag">★ {{ review.rating }}/5</span>{% endif %}
-          <h2><a href="{{ review.url }}">{{ review.title }}</a></h2>
-          {% if review.author %}<p><em>by {{ review.author }}</em></p>{% endif %}
-          {% if review.description %}<p>{{ review.description }}</p>{% endif %}
-        </div>
+    <!-- Hero -->
+    <div class="reviews-hero">
+      <h1>Reviews</h1>
+      <p>Critical reviews of journals, books, policies, technologies, and research methods at the intersection of environment, technology, and governance.</p>
+    </div>
+
+    <!-- Category navigation (quick filters) -->
+    <div class="reviews-categories">
+      <a href="#journals" class="cat-chip">Journal Reviews</a>
+      <a href="#policy" class="cat-chip">Policy Reviews</a>
+      <a href="#books" class="cat-chip">Book Reviews</a>
+      <a href="#technology" class="cat-chip">Technology Reviews</a>
+      <a href="#methods" class="cat-chip">Methods Reviews</a>
+    </div>
+
+    <!-- ========== JOURNAL REVIEWS ========== -->
+    {% assign journals = site.reviews | where: "category", "journals" | sort: "date" | reverse %}
+    {% if journals.size > 0 %}
+    <section class="reviews-group" id="journals">
+      <h2 class="group-title">Journal Reviews</h2>
+      <div class="reviews-grid">
+        {% for item in journals %}
+        <article class="review-card">
+          <div class="card-meta">
+            <span class="review-date">{{ item.date | date: "%b %d, %Y" }}</span>
+            <span class="review-cat">Journal</span>
+          </div>
+          <h3><a href="{{ item.url }}">{{ item.title }}</a></h3>
+          {% if item.description %}
+            <p class="review-excerpt">{{ item.description | truncate: 140 }}</p>
+          {% endif %}
+          {% if item.journal %}
+            <div class="review-source">{{ item.journal }}</div>
+          {% endif %}
+          <a href="{{ item.url }}" class="read-more">Read review →</a>
+        </article>
+        {% endfor %}
       </div>
-    </li>
-    {% endfor %}
-  </ul>
+    </section>
+    {% endif %}
 
-</div>
+    <!-- ========== POLICY REVIEWS ========== -->
+    {% assign policy = site.reviews | where: "category", "policy" | sort: "date" | reverse %}
+    {% if policy.size > 0 %}
+    <section class="reviews-group" id="policy">
+      <h2 class="group-title">Policy Reviews</h2>
+      <div class="reviews-grid">
+        {% for item in policy %}
+        <article class="review-card">
+          <div class="card-meta">
+            <span class="review-date">{{ item.date | date: "%b %d, %Y" }}</span>
+            <span class="review-cat">Policy</span>
+          </div>
+          <h3><a href="{{ item.url }}">{{ item.title }}</a></h3>
+          {% if item.description %}
+            <p class="review-excerpt">{{ item.description | truncate: 140 }}</p>
+          {% endif %}
+          <a href="{{ item.url }}" class="read-more">Read review →</a>
+        </article>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- ========== BOOK REVIEWS ========== -->
+    {% assign books = site.reviews | where: "category", "books" | sort: "date" | reverse %}
+    {% if books.size > 0 %}
+    <section class="reviews-group" id="books">
+      <h2 class="group-title">Book Reviews</h2>
+      <div class="reviews-grid">
+        {% for item in books %}
+        <article class="review-card">
+          <div class="card-meta">
+            <span class="review-date">{{ item.date | date: "%b %d, %Y" }}</span>
+            <span class="review-cat">Book</span>
+          </div>
+          <h3><a href="{{ item.url }}">{{ item.title }}</a></h3>
+          {% if item.description %}
+            <p class="review-excerpt">{{ item.description | truncate: 140 }}</p>
+          {% endif %}
+          {% if item.author %}
+            <div class="review-source">by {{ item.author }}</div>
+          {% endif %}
+          <a href="{{ item.url }}" class="read-more">Read review →</a>
+        </article>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- ========== TECHNOLOGY REVIEWS ========== -->
+    {% assign technology = site.reviews | where: "category", "technology" | sort: "date" | reverse %}
+    {% if technology.size > 0 %}
+    <section class="reviews-group" id="technology">
+      <h2 class="group-title">Technology Reviews</h2>
+      <div class="reviews-grid">
+        {% for item in technology %}
+        <article class="review-card">
+          <div class="card-meta">
+            <span class="review-date">{{ item.date | date: "%b %d, %Y" }}</span>
+            <span class="review-cat">Tech</span>
+          </div>
+          <h3><a href="{{ item.url }}">{{ item.title }}</a></h3>
+          {% if item.description %}
+            <p class="review-excerpt">{{ item.description | truncate: 140 }}</p>
+          {% endif %}
+          <a href="{{ item.url }}" class="read-more">Read review →</a>
+        </article>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- ========== METHODS REVIEWS ========== -->
+    {% assign methods = site.reviews | where: "category", "methods" | sort: "date" | reverse %}
+    {% if methods.size > 0 %}
+    <section class="reviews-group" id="methods">
+      <h2 class="group-title">Methods Reviews</h2>
+      <div class="reviews-grid">
+        {% for item in methods %}
+        <article class="review-card">
+          <div class="card-meta">
+            <span class="review-date">{{ item.date | date: "%b %d, %Y" }}</span>
+            <span class="review-cat">Methods</span>
+          </div>
+          <h3><a href="{{ item.url }}">{{ item.title }}</a></h3>
+          {% if item.description %}
+            <p class="review-excerpt">{{ item.description | truncate: 140 }}</p>
+          {% endif %}
+          <a href="{{ item.url }}" class="read-more">Read review →</a>
+        </article>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- Fallback if no reviews -->
+    {% if site.reviews.size == 0 %}
+    <div class="empty-state">
+      <p>No reviews yet. Check back soon.</p>
+    </div>
+    {% endif %}
+
+    <!-- Topic cloud -->
+    <div class="topic-cluster">
+      <h4>Explore more</h4>
+      <div class="topic-buttons">
+        <a href="{{ site.baseurl }}/essays/">Essays</a>
+        <a href="{{ site.baseurl }}/research/">Research</a>
+        <a href="{{ site.baseurl }}/projects/">Projects</a>
+        <a href="{{ site.baseurl }}/about/">About</a>
+        <a href="{{ site.baseurl }}/now/">Now</a>
+      </div>
+    </div>
+
+  </div>
+</section>

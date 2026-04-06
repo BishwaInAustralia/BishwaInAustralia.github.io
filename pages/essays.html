@@ -5,44 +5,158 @@ description: Deep writing on technology, policy, and society.
 permalink: /essays/
 ---
 
-<div class="page-wrap">
 
-  <div class="section-header">
-    <div class="section-label">Writing</div>
-    <h1>Essays:</h1>
-    <p>Deep, timeless writing on technology, policy, and society.</p>
+<section class="essays-page">
+  <div class="essays-container">
+
+    <!-- Hero -->
+    <div class="essays-hero">
+      <h1>Essays</h1>
+      <p>Long‑form writing on the systems that shape our world — from climate policy to digital governance.</p>
+    </div>
+
+    <!-- Category navigation (quick filters) -->
+    <div class="essays-categories">
+      <a href="#opinion" class="cat-chip">Opinion</a>
+      <a href="#policy" class="cat-chip">Policy & Governance</a>
+      <a href="#climate" class="cat-chip">Climate & Environment</a>
+      <a href="#technology" class="cat-chip">Technology & Society</a>
+      <a href="#field" class="cat-chip">Field Reflections</a>
+    </div>
+
+    <!-- ========== OPINION ========== -->
+    {% assign opinion_essays = site.essays | where: "category", "opinion" | sort: "date" | reverse %}
+    {% if opinion_essays.size > 0 %}
+    <section class="essay-group" id="opinion">
+      <h2 class="group-title">Opinion & Commentary</h2>
+      <div class="essay-grid">
+        {% for essay in opinion_essays %}
+        <article class="essay-card">
+          <div class="card-meta">
+            <span class="essay-date">{{ essay.date | date: "%b %d, %Y" }}</span>
+            <span class="essay-cat">Opinion</span>
+          </div>
+          <h3><a href="{{ essay.url }}">{{ essay.title }}</a></h3>
+          {% if essay.description %}
+            <p class="essay-excerpt">{{ essay.description | truncate: 140 }}</p>
+          {% endif %}
+          <a href="{{ essay.url }}" class="read-more">Read →</a>
+        </article>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- ========== POLICY ========== -->
+    {% assign policy_essays = site.essays | where: "category", "policy" | sort: "date" | reverse %}
+    {% if policy_essays.size > 0 %}
+    <section class="essay-group" id="policy">
+      <h2 class="group-title">Policy & Governance</h2>
+      <div class="essay-grid">
+        {% for essay in policy_essays %}
+        <article class="essay-card">
+          <div class="card-meta">
+            <span class="essay-date">{{ essay.date | date: "%b %d, %Y" }}</span>
+            <span class="essay-cat">Policy</span>
+          </div>
+          <h3><a href="{{ essay.url }}">{{ essay.title }}</a></h3>
+          {% if essay.description %}
+            <p class="essay-excerpt">{{ essay.description | truncate: 140 }}</p>
+          {% endif %}
+          <a href="{{ essay.url }}" class="read-more">Read →</a>
+        </article>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- ========== CLIMATE ========== -->
+    {% assign climate_essays = site.essays | where: "category", "climate" | sort: "date" | reverse %}
+    {% if climate_essays.size > 0 %}
+    <section class="essay-group" id="climate">
+      <h2 class="group-title">Climate & Environment</h2>
+      <div class="essay-grid">
+        {% for essay in climate_essays %}
+        <article class="essay-card">
+          <div class="card-meta">
+            <span class="essay-date">{{ essay.date | date: "%b %d, %Y" }}</span>
+            <span class="essay-cat">Climate</span>
+          </div>
+          <h3><a href="{{ essay.url }}">{{ essay.title }}</a></h3>
+          {% if essay.description %}
+            <p class="essay-excerpt">{{ essay.description | truncate: 140 }}</p>
+          {% endif %}
+          <a href="{{ essay.url }}" class="read-more">Read →</a>
+        </article>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- ========== TECHNOLOGY ========== -->
+    {% assign tech_essays = site.essays | where: "category", "technology" | sort: "date" | reverse %}
+    {% if tech_essays.size > 0 %}
+    <section class="essay-group" id="technology">
+      <h2 class="group-title">Technology & Society</h2>
+      <div class="essay-grid">
+        {% for essay in tech_essays %}
+        <article class="essay-card">
+          <div class="card-meta">
+            <span class="essay-date">{{ essay.date | date: "%b %d, %Y" }}</span>
+            <span class="essay-cat">Technology</span>
+          </div>
+          <h3><a href="{{ essay.url }}">{{ essay.title }}</a></h3>
+          {% if essay.description %}
+            <p class="essay-excerpt">{{ essay.description | truncate: 140 }}</p>
+          {% endif %}
+          <a href="{{ essay.url }}" class="read-more">Read →</a>
+        </article>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- ========== FIELD REFLECTIONS ========== -->
+    {% assign field_essays = site.essays | where: "category", "field" | sort: "date" | reverse %}
+    {% if field_essays.size > 0 %}
+    <section class="essay-group" id="field">
+      <h2 class="group-title">Field Reflections</h2>
+      <div class="essay-grid">
+        {% for essay in field_essays %}
+        <article class="essay-card">
+          <div class="card-meta">
+            <span class="essay-date">{{ essay.date | date: "%b %d, %Y" }}</span>
+            <span class="essay-cat">Field</span>
+          </div>
+          <h3><a href="{{ essay.url }}">{{ essay.title }}</a></h3>
+          {% if essay.description %}
+            <p class="essay-excerpt">{{ essay.description | truncate: 140 }}</p>
+          {% endif %}
+          <a href="{{ essay.url }}" class="read-more">Read →</a>
+        </article>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- Fallback if no essays at all -->
+    {% if site.essays.size == 0 %}
+    <div class="empty-state">
+      <p>No essays yet. Check back soon.</p>
+    </div>
+    {% endif %}
+
+    <!-- Topic cloud (reuse from landing) -->
+    <div class="topic-cluster">
+      <h4>Explore more</h4>
+      <div class="topic-buttons">
+        <a href="{{ site.baseurl }}/research/">Research</a>
+        <a href="{{ site.baseurl }}/projects/">Projects</a>
+        <a href="{{ site.baseurl }}/reviews/">Reviews</a>
+        <a href="{{ site.baseurl }}/about/">About</a>
+        <a href="{{ site.baseurl }}/now/">Now</a>
+      </div>
+    </div>
+
   </div>
-
-  <ul class="card-list">
-    {% for essay in site.essays %}
-    <li class="card-item">
-      <div class="card-item-inner">
-        {% if essay.date %}
-        <div class="card-date">{{ essay.date | date: "%b %Y" }}</div>
-        {% else %}
-        <div class="card-date">&mdash;</div>
-        {% endif %}
-        <div class="card-content">
-          {% if essay.tags %}<span class="card-tag">{{ essay.tags | first }}</span>{% endif %}
-          <h2><a href="{{ essay.url }}">{{ essay.title }}</a></h2>
-          {% if essay.description %}<p>{{ essay.description }}</p>{% endif %}
-        </div>
-      </div>
-    </li>
-    {% endfor %}
-
-    {% for post in site.posts %}
-    <li class="card-item">
-      <div class="card-item-inner">
-        <div class="card-date">{{ post.date | date: "%b %Y" }}</div>
-        <div class="card-content">
-          <span class="card-tag">Post</span>
-          <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
-          {% if post.description %}<p>{{ post.description }}</p>{% endif %}
-        </div>
-      </div>
-    </li>
-    {% endfor %}
-  </ul>
-
-</div>
+</section>
