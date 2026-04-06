@@ -1,109 +1,115 @@
 <header class="site-header">
   <div class="header-inner">
 
-    <a class="site-logo" href="/">{{ site.title }}</a>
+    <a class="site-logo" href="{{ site.baseurl }}/">{{ site.title }}</a>
 
-    <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
-      ☰
-    </button>
+    <div class="header-controls">
+      <button class="dark-toggle" id="dark-toggle" aria-label="Toggle dark mode">
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </div>
 
     <nav class="site-nav" id="site-nav">
 
-      <!-- ================= Essays ================= -->
-      <div class="nav-item dropdown">
-        <button class="dropdown-toggle" aria-expanded="false">
-          Essays
-        </button>
-        <div class="dropdown-menu">
-
-          <a href="/essays/">All Essays</a>
-
-          <div class="dropdown-divider"></div>
-
-          <a href="/essays/opinion/">Opinion & Commentary</a>
-          <a href="/essays/policy/">Policy & Governance</a>
-          <a href="/essays/climate/">Climate & Environment</a>
-          <a href="/essays/technology/">Technology & Society</a>
-          <a href="/essays/field/">Field Reflections</a>
-
-        </div>
-      </div>
-
-      <!-- ================= Research ================= -->
-      <div class="nav-item dropdown">
-        <button class="dropdown-toggle" aria-expanded="false">
-          Research
-        </button>
-        <div class="dropdown-menu">
-
-          <a href="/research/">Overview</a>
-
-          <div class="dropdown-divider"></div>
-
-          <a href="/research/publications/">Publications</a>
-          <a href="/research/projects/">Research Projects</a>
-          <a href="/research/working-papers/">Working Papers</a>
-          <a href="/research/data/">Data & Analysis</a>
-          <a href="/research/case-studies/">Case Studies</a>
-
-        </div>
-      </div>
-
-      <!-- ================= Projects ================= -->
-      <div class="nav-item dropdown">
-        <button class="dropdown-toggle" aria-expanded="false">
-          Projects
-        </button>
-        <div class="dropdown-menu">
-
-          <a href="/projects/">All Projects</a>
-
-          <div class="dropdown-divider"></div>
-
-          <a href="/projects/environmental/">Environmental Projects</a>
-          <a href="/projects/tools/">Research Tools</a>
-          <a href="/projects/web/">Web Applications</a>
-          <a href="/projects/data-vis/">Data Visualization</a>
-          <a href="/projects/consulting/">Consulting Projects</a>
-
-        </div>
-      </div>
-
-      <!-- ================= Reviews ================= -->
-      <div class="nav-item dropdown">
-        <button class="dropdown-toggle" aria-expanded="false">
-          Reviews
-        </button>
-        <div class="dropdown-menu">
-
-          <a href="/reviews/">All Reviews</a>
-
-          <div class="dropdown-divider"></div>
-
-          <a href="/reviews/journals/">Journal Reviews</a>
-          <a href="/reviews/policy/">Policy Reviews</a>
-          <a href="/reviews/books/">Book Reviews</a>
-          <a href="/reviews/technology/">Technology Reviews</a>
-          <a href="/reviews/methods/">Methods Reviews</a>
-
-        </div>
-      </div>
-
-      <!-- ================= Standalone ================= -->
-      <a href="/about/" {% if page.url == '/about/' %}class="active"{% endif %}>About</a>
-      <a href="/now/">Now</a>
-
-      <!-- ================= Search ================= -->
       <div class="nav-search">
-        <input type="text" placeholder="Search..." />
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="search" placeholder="Search…" aria-label="Search site">
       </div>
 
-      <!-- ================= Dark Mode ================= -->
-      <button class="dark-toggle" id="dark-toggle" aria-label="Toggle dark mode">
-        🌙
-      </button>
+      <!-- Essays -->
+      <div class="nav-item has-drop">
+        <div class="nav-row">
+          <a class="nav-link{% if page.url contains '/essays/' %} active{% endif %}" href="{{ site.baseurl }}/essays/">Essays</a>
+          <button class="drop-btn" aria-expanded="false" aria-label="Toggle Essays submenu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </div>
+        <ul class="drop-menu">
+          <li><a href="{{ site.baseurl }}/essays/opinion/"{% if page.url contains '/essays/opinion/' %} aria-current="page"{% endif %}>Opinion &amp; Commentary</a></li>
+          <li><a href="{{ site.baseurl }}/essays/policy/"{% if page.url contains '/essays/policy/' %} aria-current="page"{% endif %}>Policy &amp; Governance</a></li>
+          <li><a href="{{ site.baseurl }}/essays/climate/"{% if page.url contains '/essays/climate/' %} aria-current="page"{% endif %}>Climate &amp; Environment</a></li>
+          <li><a href="{{ site.baseurl }}/essays/technology/"{% if page.url contains '/essays/technology/' %} aria-current="page"{% endif %}>Technology &amp; Society</a></li>
+          <li><a href="{{ site.baseurl }}/essays/field/"{% if page.url contains '/essays/field/' %} aria-current="page"{% endif %}>Field Reflections</a></li>
+        </ul>
+      </div>
+
+      <!-- Research -->
+      <div class="nav-item has-drop">
+        <div class="nav-row">
+          <a class="nav-link{% if page.url contains '/research/' %} active{% endif %}" href="{{ site.baseurl }}/research/">Research</a>
+          <button class="drop-btn" aria-expanded="false" aria-label="Toggle Research submenu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </div>
+        <ul class="drop-menu">
+          <li><a href="{{ site.baseurl }}/research/publications/"{% if page.url contains '/research/publications/' %} aria-current="page"{% endif %}>Publications</a></li>
+          <li><a href="{{ site.baseurl }}/research/projects/"{% if page.url contains '/research/projects/' %} aria-current="page"{% endif %}>Research Projects</a></li>
+          <li><a href="{{ site.baseurl }}/research/working-papers/"{% if page.url contains '/research/working-papers/' %} aria-current="page"{% endif %}>Working Papers</a></li>
+          <li><a href="{{ site.baseurl }}/research/data/"{% if page.url contains '/research/data/' %} aria-current="page"{% endif %}>Data &amp; Analysis</a></li>
+          <li><a href="{{ site.baseurl }}/research/case-studies/"{% if page.url contains '/research/case-studies/' %} aria-current="page"{% endif %}>Case Studies</a></li>
+        </ul>
+      </div>
+
+      <!-- Projects -->
+      <div class="nav-item has-drop">
+        <div class="nav-row">
+          <a class="nav-link{% if page.url contains '/projects/' %} active{% endif %}" href="{{ site.baseurl }}/projects/">Projects</a>
+          <button class="drop-btn" aria-expanded="false" aria-label="Toggle Projects submenu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </div>
+        <ul class="drop-menu">
+          <li><a href="{{ site.baseurl }}/projects/environmental/"{% if page.url contains '/projects/environmental/' %} aria-current="page"{% endif %}>Environmental Projects</a></li>
+          <li><a href="{{ site.baseurl }}/projects/tools/"{% if page.url contains '/projects/tools/' %} aria-current="page"{% endif %}>Research Tools</a></li>
+          <li><a href="{{ site.baseurl }}/projects/web/"{% if page.url contains '/projects/web/' %} aria-current="page"{% endif %}>Web Applications</a></li>
+          <li><a href="{{ site.baseurl }}/projects/data-vis/"{% if page.url contains '/projects/data-vis/' %} aria-current="page"{% endif %}>Data Visualization</a></li>
+          <li><a href="{{ site.baseurl }}/projects/consulting/"{% if page.url contains '/projects/consulting/' %} aria-current="page"{% endif %}>Consulting Projects</a></li>
+        </ul>
+      </div>
+
+      <!-- Reviews -->
+      <div class="nav-item has-drop">
+        <div class="nav-row">
+          <a class="nav-link{% if page.url contains '/reviews/' %} active{% endif %}" href="{{ site.baseurl }}/reviews/">Reviews</a>
+          <button class="drop-btn" aria-expanded="false" aria-label="Toggle Reviews submenu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </div>
+        <ul class="drop-menu">
+          <li><a href="{{ site.baseurl }}/reviews/journals/"{% if page.url contains '/reviews/journals/' %} aria-current="page"{% endif %}>Journal Reviews</a></li>
+          <li><a href="{{ site.baseurl }}/reviews/policy/"{% if page.url contains '/reviews/policy/' %} aria-current="page"{% endif %}>Policy Reviews</a></li>
+          <li><a href="{{ site.baseurl }}/reviews/books/"{% if page.url contains '/reviews/books/' %} aria-current="page"{% endif %}>Book Reviews</a></li>
+          <li><a href="{{ site.baseurl }}/reviews/technology/"{% if page.url contains '/reviews/technology/' %} aria-current="page"{% endif %}>Technology Reviews</a></li>
+          <li><a href="{{ site.baseurl }}/reviews/methods/"{% if page.url contains '/reviews/methods/' %} aria-current="page"{% endif %}>Methods Reviews</a></li>
+        </ul>
+      </div>
+
+      <!-- Standalone -->
+      <div class="nav-item">
+        <a class="nav-link{% if page.url == '/about/' %} active{% endif %}" href="{{ site.baseurl }}/about/">About</a>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link{% if page.url == '/now/' %} active{% endif %}" href="{{ site.baseurl }}/now/">Now</a>
+      </div>
+
+      <!-- Dark toggle (visible inside drawer on mobile) -->
+      <div class="nav-item nav-item--dark-toggle">
+        <button class="dark-toggle dark-toggle--drawer" aria-label="Toggle dark mode">
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <span class="dark-toggle-label">Toggle theme</span>
+        </button>
+      </div>
 
     </nav>
+
+    <div class="nav-backdrop" id="nav-backdrop"></div>
 
   </div>
 </header>
