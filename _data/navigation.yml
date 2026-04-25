@@ -1,0 +1,43 @@
+# _data/navigation.yml
+
+main:
+
+
+
+  - title: Research
+    url: /research/
+    children:
+      - title: Publications
+        url: /research/publications/
+      - title: Projects
+        url: /research/projects/
+      - title: Data Analysis
+        url: /research/data-analysis/
+
+  - title: Essays
+    url: /essays/
+    children:
+      - title: Environment
+        url: /essays/environment/
+      - title: Policy
+        url: /essays/policy/
+      - title: Technology
+        url: /essays/technology/
+
+  - title: Reviews
+    url: /reviews/
+    children:
+      - title: Books
+        url: /reviews/books/
+      - title: Papers
+        url: /reviews/papers/
+      - title: Policy Reviews
+        url: /reviews/policy/
+
+  - title: Portfolio
+    url: /portfolio/
+
+  - title: About
+    url: /about/
+
+
